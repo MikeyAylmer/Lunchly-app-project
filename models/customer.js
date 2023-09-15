@@ -53,6 +53,18 @@ class Customer {
     return new Customer(customer);
   }
 
+  //** Search customer by name */
+  static async searchByName(customerName) {
+    // Implement the database query to search for customers by name
+    const query = `
+      SELECT *
+      FROM customers
+      WHERE CONCAT(firstName, ' ', lastName) ILIKE $1
+    `;
+    const result = await db.query(query, [`%${customerName}%`]);
+    return result.rows;
+  }
+
   /** get all reservations for this customer. */
 
   async getReservations() {

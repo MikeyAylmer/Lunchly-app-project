@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{ customer.fullName }}{% endblock %}
+
+{% block content %}
+<h1>Search Results</h1>
+<ul>
+    {% for customer in results %}
+    <li>{{ customer.fullName }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
